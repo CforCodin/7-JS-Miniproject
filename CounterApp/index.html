@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter app</title>
+    <style>
+        body{
+        background-image: linear-gradient(to right, #0f0c29, #302b63, #24243e);
+        }
+        h1{
+            color: white;
+            font-size: 50px;
+            text-align: center;
+        }
+        .content{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .center{
+            background-color: transparent;
+            color: white;
+            width: 300px;
+            height: 350px;
+            border-radius: 10px; 
+            border: white solid 2px;
+        }
+        #cen{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+        }
+        #app{
+            margin-top: 20%;
+            margin-bottom: 10%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .btn{
+            background-color: transparent;
+            color: white;
+            border: white solid 2px;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 10px;
+            font-size: 15x;
+        }
+        .count{
+            font-size: 50px;
+            border-radius: 10px;
+            background-color: white;
+            color:#24243e;
+            padding: 10px;
+            padding-left: 12px;
+            padding-right: 12px;
+        }
+        .count:hover{
+            background-color: #24243e;
+            color: white;
+        }
+        .btn:hover{
+            background-color: white;
+            color: #24243e;
+        }
+    </style>
+</head>
+<body>
+    
+        <h1 text-align="center">Counter App</h1>
+        <div class ="content">
+        <div class="center">
+        <div id="app">
+        <h2 class="count" id="cnt">0</h2>
+        </div>
+        <div id="cen">
+        <button onclick="decrement()" class="btn">Decrement</button>
+        <button onclick="reset()" class="btn">Reset</button>
+        <button onclick="increment()" class="btn">Increment</button>
+        </div>
+    </div>
+    </div> 
+    <script>
+        var count = 0;
+        var cnt = document.getElementById("cnt");
+        function increment(){
+            count++;
+            cnt.innerHTML = count;
+        }
+        function decrement(){
+            count--;
+            cnt.innerHTML = count;
+        }
+        function reset(){
+            count = 0;
+            cnt.innerHTML = count;
+        } 
+        </script>
+</body>
+</html>
