@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobi Validator</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Caprasimo&family=Recursive&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Caprasimo&family=Recursive&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Caprasimo&family=Cedarville+Cursive&family=Recursive&display=swap');
+
+        body{
+            background-image: linear-gradient(to right, #a7006d, #fffde4);
+        }
+        h1{
+            color: white;
+            font-size: 50px;
+            text-align: center;
+            font-family: 'Caprasimo', sans-serif;
+        }
+        .content{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .center{
+            background-color: #24243e;
+            color: white;
+            width: 500px;
+            height: 400px;
+            border-radius: 10px; 
+            border: white solid 2px;
+        }
+        #cen{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+        }
+        #app{
+            margin-top: 20%;
+            margin-bottom: 10%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #num{
+            width: 300px;
+            height: 50px;
+            border-radius: 10px;
+            border: white solid 2px;
+            font-size: 20px;
+            text-align: center;
+            font-family: 'Caprasimo', cursive;
+            font-family: 'Recursive', sans-serif;
+        }
+        .btn{
+            background-color: transparent;
+            color: white;
+            border: white solid 2px;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 10px;
+            font-size: 15x;
+        }
+        .btn:focus{
+            outline: none;
+        }
+        .btn:active{
+            background-color: white;
+            color: #24243e;
+        }
+        .btn:hover{
+            background-color: white;
+            color: #24243e;
+        }
+        #result{
+            font-size: 20px;
+            font-family: 'Caprasimo', cursive;
+            font-family: 'Cedarville Cursive', cursive;
+            text-align: center;
+            color: rgb(225, 65, 65);
+        }
+
+    </style>
+</head>
+<body>
+    
+        <h1 text-align="center">Mobile Number <span>Validator</span></h1>
+        <div class ="content">
+        <div class="center">
+        <div id="app">
+        <input type="tel" id="num" placeholder="Enter your phone number" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}">
+        </div>
+        <div id="cen">
+        <button onclick="CheckValidity()" class="btn" id="event">Check The Number</button>
+        </div>
+        <p id="result">Your Result </p>
+    </div>
+    </div> 
+    <script>
+        var count = 0;
+        var cnt = document.getElementById("num");
+        var event = document.getElementById("event");
+       
+        function CheckValidity()
+        {
+            
+            count = cnt.value.length;
+            var re = /^(\d{3})[- ]?(\d{3})[- ]?(\d{4})$/
+            //var re = /^[0-9]{3}-[0-9]{3}-[0-9]{4}$/;
+            if(re.test(cnt.value) && isNaN(cnt.value) == false)
+            {
+                document.getElementById("result").innerHTML = "Number valid";
+            }
+            else
+            {
+                document.getElementById("result").innerHTML = "Number invalid";
+            }
+            
+        } 
+        </script>
+</body>
+</html>
