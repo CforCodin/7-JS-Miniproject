@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Checker</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Caprasimo&family=Cedarville+Cursive&family=Knewave&family=Recursive&display=swap');
+        body{
+            background-color: #e5e5f7;
+            opacity: 1;
+            background-image:  linear-gradient(#8183b0 0.9px, transparent 0.9px), linear-gradient(to right, #8183b0 0.9px, #e5e5f7 0.9px);
+            background-size: 18px 18px;
+        }
+        h1{
+            color: #5e62a3;
+            font-size: 50px;
+            text-align: center;
+            font-family: 'Recursive', sans-serif;
+        }
+        .content{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .center{
+            background-color: #24243e;
+            color: white;
+            width: 500px;
+            height: 400px;
+            border-radius: 10px; 
+            border: white solid 2px;
+        }
+        #cen{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #app{
+            margin-top: 20%;
+            margin-bottom: 10%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #num{
+            width: 250px;
+            height: 50px;
+            border-radius: 10px;
+            border: rgb(214, 214, 214) solid 2px;
+            font-size: 20px;
+            text-align: center;
+            font-family: 'Caprasimo', cursive;
+            font-family: 'Recursive', sans-serif;
+        }
+        .btn{
+            background-color: transparent;
+            color: white;
+            border: white solid 2px;
+            font-size: 20px;
+            font-family: 'Caprasimo', cursive;
+            font-family: 'Recursive', sans-serif;
+            border-radius: 10px;
+            margin: 10px;
+            padding: 5px;
+            cursor: pointer;
+        }
+        .btn:hover{
+            background-color: white;
+            color: #24243e;
+        }
+        .active{
+            background-color: rgb(207, 207, 207);
+            color: #24243e;
+        }
+        #event{
+            transition: 0.5s;
+            color:black;
+            background-color: #b93a80;
+        }
+        #event:hover{
+            color: #b93a80;
+            background-color: white;
+        }
+        #result{
+            font-size: 20px;
+            font-family: 'Caprasimo', cursive;
+            font-family: 'Recursive', sans-serif;
+            text-align: center;
+            margin-top: 10%;
+            color: #b93a80;
+        }
+        span{
+            font-family: 'Caprasimo', cursive;
+            font-family: 'Cedarville Cursive', cursive;
+            font-family: 'Knewave', cursive;
+            color: #b93a80;
+        }
+
+    </style>
+</head>
+<body>
+    <h1 text-align="center">Special Number <span>Checker</span></h1>
+    <div class ="content">
+    <div class="center">
+    <div id="app">
+    <button onclick="CheckPalindrome()" class="btn active" >Palindrome</button>
+    <button onclick="CheckPrime()" class="btn" >Prime</button>
+    <button onclick="CheckArmstrong()" class="btn" >Armstrong</button>
+    <button onclick="CheckPerfect()" class="btn" >Perfect</button> 
+    </div>
+    <div id="cen">
+    <input type="number" id="num" placeholder="Enter a Number">
+    <button onclick="CheckValidity()" class="btn" id="event">Check The Number</button>
+    </div>
+    <p id="result">Your Result</p>
+    </div>
+    </div>
+    <script>
+        x = document.querySelector("#num");
+            x.placeholder = "Enter a Number for palindrome";
+            y = x.value;
+        CheckPalindrome = () =>{
+            document.querySelector(".active").classList.remove("active");
+            document.querySelector(".btn").classList.add("active");
+            x = document.querySelector("#num");
+            x.placeholder = "Enter a Number for palindrome";
+            y = x.value;
+            document.querySelector("#event").onclick = () =>{
+                if(y == ""){
+                    document.querySelector("#result").innerHTML = "Please Enter a Number";
+                }
+                else{
+                    let temp = y;
+                    let rev = 0;
+                    while(temp > 0){
+                        let rem = temp % 10;
+                        rev = rev * 10 + rem;
+                        temp = parseInt(temp / 10);
+                    }
+                    if(rev == y){
+                        document.querySelector("#result").innerHTML = "The Number is Palindrome";
+                    }
+                    else{
+                        document.querySelector("#result").innerHTML = "The Number is not Palindrome";
+                    }
+                }
+            }
+        }
+        CheckPrime = () =>{
+            document.querySelector(".active").classList.remove("active");
+            document.querySelectorAll(".btn")[1].classList.add("active");
+            x = document.querySelector("#num");
+            x.placeholder = "Enter a Number for prime";
+            y = x.value;
+            document.querySelector("#event").onclick = () =>{
+                if(y == ""){
+                    document.querySelector("#result").innerHTML = "Please Enter a Number";
+                }
+                else{
+                    let flag = 0;
+                    for(let i = 2; i < y; i++){
+                        if(y % i == 0){
+                            flag = 1;
+                            break;
+                        }
+                    }
+                    if(flag == 0){
+                        document.querySelector("#result").innerHTML = "The Number is Prime";
+                    }
+                    else{
+                        document.querySelector("#result").innerHTML = "The Number is not Prime";
+                    }
+                }
+            }
+        }
+        CheckArmstrong = () =>{
+            document.querySelector(".active").classList.remove("active");
+            document.querySelectorAll(".btn")[2].classList.add("active");
+            x = document.querySelector("#num");
+            x.placeholder = "Enter a Number for armstrong";
+            y = x.value;
+            document.querySelector("#event").onclick = () =>{
+                if(y == ""){
+                    document.querySelector("#result").innerHTML = "Please Enter a Number";
+                }
+                else{
+                    let temp = y;
+                    let sum = 0;
+                    while(temp > 0){
+                        let rem = temp % 10;
+                        sum = sum + (rem * rem * rem);
+                        temp = parseInt(temp / 10);
+                    }
+                    if(sum == y){
+                        document.querySelector("#result").innerHTML = "The Number is Armstrong";
+                    }
+                    else{
+                        document.querySelector("#result").innerHTML = "The Number is not Armstrong";
+                    }
+                }
+            }   
+        }
+        CheckPerfect = () =>{
+            document.querySelector(".active").classList.remove("active");
+            document.querySelectorAll(".btn")[3].classList.add("active");
+            x = document.querySelector("#num");
+            x.placeholder = "Enter a Number for perfect";
+            y = x.value;
+            document.querySelector("#event").onclick = () =>{
+                if(y == ""){
+                    document.querySelector("#result").innerHTML = "Please Enter a Number";
+                }
+                else{
+                    let sum = 0;
+                    for(let i = 1; i < y; i++){
+                        if(y % i == 0){
+                            sum = sum + i;
+                        }
+                    }
+                    if(sum == y){
+                        document.querySelector("#result").innerHTML = "The Number is Perfect";
+                    }
+                    else{
+                        document.querySelector("#result").innerHTML = "The Number is not Perfect";
+                    }
+                }
+            }
+        }
+        
+    </script> 
+</body>
+</html>
