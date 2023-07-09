@@ -117,16 +117,16 @@
     </div>
     </div>
     <script>
-        x = document.querySelector("#num");
-            x.placeholder = "Enter a Number for palindrome";
-            y = x.value;
+       
         CheckPalindrome = () =>{
             document.querySelector(".active").classList.remove("active");
             document.querySelector(".btn").classList.add("active");
-            x = document.querySelector("#num");
+            let x = document.querySelector("#num");
             x.placeholder = "Enter a Number for palindrome";
-            y = x.value;
             document.querySelector("#event").onclick = () =>{
+                let x = document.querySelector("#num");
+                let y = x.value;
+                console.log(y);
                 if(y == ""){
                     document.querySelector("#result").innerHTML = "Please Enter a Number";
                 }
@@ -150,10 +150,11 @@
         CheckPrime = () =>{
             document.querySelector(".active").classList.remove("active");
             document.querySelectorAll(".btn")[1].classList.add("active");
-            x = document.querySelector("#num");
+            let x = document.querySelector("#num");
             x.placeholder = "Enter a Number for prime";
-            y = x.value;
             document.querySelector("#event").onclick = () =>{
+                let x = document.querySelector("#num");
+                let y = x.value;
                 if(y == ""){
                     document.querySelector("#result").innerHTML = "Please Enter a Number";
                 }
@@ -179,8 +180,9 @@
             document.querySelectorAll(".btn")[2].classList.add("active");
             x = document.querySelector("#num");
             x.placeholder = "Enter a Number for armstrong";
-            y = x.value;
             document.querySelector("#event").onclick = () =>{
+                x = document.querySelector("#num");
+                y = x.value;
                 if(y == ""){
                     document.querySelector("#result").innerHTML = "Please Enter a Number";
                 }
@@ -206,8 +208,9 @@
             document.querySelectorAll(".btn")[3].classList.add("active");
             x = document.querySelector("#num");
             x.placeholder = "Enter a Number for perfect";
-            y = x.value;
             document.querySelector("#event").onclick = () =>{
+                x = document.querySelector("#num");
+                y = x.value;
                 if(y == ""){
                     document.querySelector("#result").innerHTML = "Please Enter a Number";
                 }
