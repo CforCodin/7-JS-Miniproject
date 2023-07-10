@@ -76,10 +76,9 @@
         }
         #result{
             font-size: 20px;
-            font-family: 'Caprasimo', cursive;
-            font-family: 'Cedarville Cursive', cursive;
             text-align: center;
-            color: rgb(225, 65, 65);
+            font-family: 'Caprasimo', cursive;
+            font-family: 'Recursive', sans-serif;
         }
 
     </style>
@@ -96,6 +95,7 @@
         <button onclick="CheckValidity()" class="btn" id="event">Check The Number</button>
         </div>
         <p id="result">Your Result </p>
+        
     </div>
     </div> 
     <script>
@@ -107,8 +107,6 @@
         {
             
             count = cnt.value.length;
-            //var re = /^(\d{3})[- ]?(\d{3})[- ]?(\d{4})$/
-            //var re = /^[0-9]{3}-[0-9]{3}-[0-9]{4}$/;
             var re = /^(\d{3})[- ]?(\d{3})[- ]?(\d{4})$/;
             if(re.test(cnt.value))
             {
