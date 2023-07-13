@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Calculator</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Caprasimo&family=Cedarville+Cursive&family=Fasthand&family=Knewave&family=Recursive&display=swap');
+        html {
+              --s: 140px; /* control the size */
+              --_g: #0000 52%,#170409 /* first color */ 54% 57%,#0000 59%; 
+              background: 
+                    radial-gradient(farthest-side at -33.33% 50%,var(--_g)) 0 calc(var(--s)/2),
+                    radial-gradient(farthest-side at 50% 133.33%,var(--_g)) calc(var(--s)/2) 0,
+                    radial-gradient(farthest-side at 133.33% 50%,var(--_g)),
+                    radial-gradient(farthest-side at 50% -33.33%,var(--_g)),#67917A; /* second color */
+              background-size: calc(var(--s)/4.667) var(--s),var(--s) calc(var(--s)/4.667);
+              opacity: 0.8;
+            }
+        h1{
+                text-align: center;
+                font-family: 'Fasthand', cursive;
+                font-family: 'Knewave', cursive;
+                word-spacing: 2px;
+                letter-spacing: 4px;
+                text-shadow: 3px 3px 3px #000000;
+                color: white;
+                font-size: 50px;
+                
+            }
+        .content{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .app{
+            margin-top: 10%;
+            margin-bottom: 10%;
+            background-color: #24243e;
+            width:500px;
+            height: 400px;
+            border-radius: 10px;
+            border: white solid 2px;
+            padding: 10px;
+        }
+        h3{
+            text-align: center;
+            font-family: 'Caprasimo', cursive;
+            font-family: 'Recursive', sans-serif;
+            color: white;
+            font-size: 20px;
+            padding-bottom: 20px;
+        }
+        input{
+            width: 250px;
+            height: 30px;
+            border-radius: 10px;
+            border: white solid 2px;
+            padding: 10px;
+            font-size: 20px;
+            font-family: 'Caprasimo', cursive;
+            font-family: 'Recursive', sans-serif;
+            color: white;
+            background-color:#170409;
+            margin-bottom: 10px;
+        }
+        button{
+            width: 100px;
+            height: 30px;
+            border-radius: 10px;
+            border: white solid 2px;
+            padding: 10px;
+            padding-bottom: 26px;
+            font-size: 15px;
+            font-family: 'Caprasimo', cursive;
+            font-family: 'Recursive', sans-serif;
+            color: white;
+            background-color:#24243e;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        button:hover{
+            background-color: white;
+            color: #24243e;
+            cursor: pointer;
+            text-emphasis: bold;
+        }
+        h4{
+            text-align: center;
+            font-family: 'Caprasimo', cursive;
+            font-family:Georgia, 'Times New Roman', Times, serif;
+            color:bisque;
+            font-size: 20px;
+            padding-bottom: 20px;
+            text-decoration:wavy;
+        }
+        #result{
+            text-align: center;
+            font-family: 'Caprasimo', cursive;
+            font-family:Georgia, 'Times New Roman', Times, serif;
+            color:rgb(18, 18, 18);
+            font-size: 20px;
+            padding-bottom: 20px;
+            text-decoration:wavy;
+            background-color: aliceblue;
+        }
+
+
+    </style>
+</head>
+<body>
+            <h1>BMI Calculator</h1>
+            <div class="content">
+                <div class="center">
+                    <div class="app">
+                        <h3 id="guide">Enter your height and weight to calculate your BMI</h3>
+                        <input type="text" id="height" placeholder="Enter your height in cm">
+                        <input type="text" id="weight" placeholder="Enter your weight in kg">
+                        <br>
+                        <button onclick="calculate()">Calculate</button>
+                        <h4 id="result">Result in Kg/m<sup>2</sup></h3>
+                    </div>
+                </div>
+            </div>
+            <script>
+                function calculate(){
+                    var height = document.getElementById("height").value;
+                    var weight = document.getElementById("weight").value;
+                    var result = (weight/(height*height))*10000;
+                    var type;
+                    if(result<18.5){
+                        type = "Severe Thin";
+                        document.getElementById("result").style.color = "red";
+                    }
+                    else if(result>=18.5 && result<=24.9){
+                        type = "Normal";
+                        document.getElementById("result").style.color = "green";
+                    }
+                    else if(result>=25 && result<=29.9){
+                        type = "Overweight";
+                        document.getElementById("result").style.color = "orange";
+                    }
+                    else if(result>=30 && result<=34.9){
+                        type = "Obese Class I";
+                        document.getElementById("result").style.color = "red";
+                    }
+                    else if(result>=35 && result<=39.9){
+                        type = "Obese Class II";
+                        document.getElementById("result").style.color = "red";
+                    }
+                    else if(result>=40){
+                        type = "Obese Class III";
+                        document.getElementById("result").style.color = "red";
+                    }
+                    else
+                    {
+                        type = "Invalid Input";
+                        document.getElementById("result").style.color = "red";
+                    }
+                    document.getElementById("result").innerHTML = result.toFixed(2)+ " Kg/m<sup>2</sup> : "+type;
+                }
+            </script>
+</body>
+</html>

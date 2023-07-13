@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stopwatch</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Caprasimo&family=Cedarville+Cursive&family=Fasthand&family=Kablammo&family=Knewave&family=Recursive&display=swap');
+        body{
+            background-color: coral;
+        }
+        .container{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .heading{
+            font-family: 'Kablammo', cursive;
+            color: white;
+            text-align: center;
+            font-size: xx-large;
+            letter-spacing: 7px;
+        }
+        .timer-display{
+            font-size: 80px;
+            font-family: 'Recursive', sans-serif;
+            color: white;
+            background-color:rgba(13, 13, 117, 0.695);
+            border-radius: 10px;
+            border: 2px double white;
+        }
+        .buttons{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+        
+        button{
+            font-size: 20px;
+            font-family: 'Recursive', sans-serif;
+            color: white;
+            background-color: transparent;
+            border: white solid 2px;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 10px;
+            cursor: pointer;
+        }
+        button:nth-child(even){
+            background-color: rgba(13, 13, 117, 0.695);
+            color: coral;
+        }
+        button:nth-child(even):hover{
+            background-color: coral;
+            color:rgba(13, 13, 117, 0.695);
+        }
+        button:nth-child(odd){
+            background-color: white;
+            color:coral;
+        }
+        button:nth-child(odd):hover{
+            background-color: coral;
+            color: white;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="center">
+        <div class="heading">
+            <h1>Stopwatch</h1>
+        </div>
+        <div class="timer-display">
+            <h1 id="timer">00:00:00</h1>
+        </div>
+        <div class="buttons">
+            <button id="start" onclick="startTimer()">Start</button>
+            <button id="reset" onclick="resetTimer()">Reset</button>
+            <button id="stop" onclick="stopTimer()">Stop</button>
+        </div>
+        </div>
+    </div>
+    <script>
+        var timer = document.getElementById("timer");
+        var start = document.getElementById("start");
+        var stop = document.getElementById("stop");
+        var reset = document.getElementById("reset");
+        var hr = 0;
+        var min = 0;
+        var sec = 0;
+        var stoptime = true;
+        function startTimer(){
+            if(stoptime == true){
+                stoptime = false;
+                timerCycle();
+            }
+        }
+        function stopTimer(){
+            if(stoptime == false){
+                stoptime = true;
+            }
+        }
+        function resetTimer(){
+            timer.innerHTML = "00:00:00";
+            stoptime = true;
+            hr = 0;
+            min = 0;
+            sec = 0;
+        }
+        function timerCycle(){
+            if(stoptime == false){
+                sec = parseInt(sec);
+                min = parseInt(min);
+                hr = parseInt(hr);
+                sec = sec + 1;
+                if(sec == 60){
+                    min = min + 1;
+                    sec = 0;
+                }
+                if(min == 60){
+                    hr = hr + 1;
+                    min = 0;
+                    sec = 0;
+                }
+                if(sec < 10 || sec == 0){
+                    sec = '0' + sec;
+                }
+                if(min < 10 || min == 0){
+                    min = '0' + min;
+                }
+                if(hr < 10 || hr == 0){
+                    hr = '0' + hr;
+                }
+                timer.innerHTML = hr + ':' + min + ':' + sec;
+                setTimeout("timerCycle()", 1000);
+            }
+        }   
+    </script>
+</body>
+</html>
