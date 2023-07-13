@@ -107,8 +107,9 @@
         {
             
             count = cnt.value.length;
-            var re = /^(\d{3})[- ]?(\d{3})[- ]?(\d{4})$/;
-            if(re.test(cnt.value))
+            var re = /^(\d{3})[- ]?(\d{3})[- ]?(\d{4})$/
+            //var re = /^[0-9]{3}-[0-9]{3}-[0-9]{4}$/;
+            if(re.test(cnt.value) && isNaN(cnt.value) == false)
             {
                 document.getElementById("result").innerHTML = "Number valid";
             }
